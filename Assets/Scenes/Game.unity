@@ -355,6 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   players: []
   playerPrefab: {fileID: 4571350300081212007, guid: 17577b11b2d39e841960a0e2cea77968, type: 3}
+  playerSpeed: 7.5
 --- !u!4 &626099677
 Transform:
   m_ObjectHideFlags: 0
