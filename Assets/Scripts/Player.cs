@@ -26,11 +26,13 @@ public class Player : MonoBehaviour
             horizontalInput = "HorizontalArrows";
             verticalInput = "VerticalArrows";
         }
+
+        //Physics2D.IgnoreLayerCollision(6, 6);
     }
 
     private void FixedUpdate()
     {
-        rb.MovePosition(rb.position + movement * 10 * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + movement * PlayersManager.Instance.playerSpeed * Time.fixedDeltaTime);
     }
 
 void Update()
