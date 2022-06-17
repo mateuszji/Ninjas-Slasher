@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public Players playerType;
     private string horizontalInput, verticalInput;
     private Vector2 movement;
+    public Transform chainTarget;
+    private KeyCode chainSpawnKey;
+    [HideInInspector] public bool spawnedChain = false;
 
     void Start()
     {
@@ -20,11 +23,13 @@ public class Player : MonoBehaviour
         {
             horizontalInput = "HorizontalWSAD";
             verticalInput = "VerticalWSAD";
+            chainSpawnKey = KeyCode.Space;
         }
         else
         {
             horizontalInput = "HorizontalArrows";
             verticalInput = "VerticalArrows";
+            chainSpawnKey = KeyCode.RightShift;
         }
 
         //Physics2D.IgnoreLayerCollision(6, 6);
@@ -49,5 +54,16 @@ void Update()
             transform.localRotation = Quaternion.Euler(0, 180, 0);
         if (movement.x == 1)
             transform.localRotation = Quaternion.Euler(0, 0, 0);
+
+        if (Input.GetKey(chainSpawnKey))
+        {
+            spawnedChain = true;
+            Chain.Instance.ChainCheck();
+        }
+        else
+        {
+            spawnedChain = false;
+            Chain.Instance.ChainCheck();
+        }
     }
 }

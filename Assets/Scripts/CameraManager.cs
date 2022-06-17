@@ -5,6 +5,9 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     private Camera mainCam;
+    [SerializeField] private BoxCollider2D mapCollider;
+    [SerializeField] private float xMin, xMax, yMin, yMax;
+
     private void Start()
     {
         if (!mainCam) mainCam = GetComponent<Camera>();
@@ -12,9 +15,11 @@ public class CameraManager : MonoBehaviour
         PutColliders();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 pos = PlayersManager.Instance.GetCenterBetweenPlayers();
+        pos.x = Mathf.Clamp(pos.x, xMin, xMax);
+        pos.y = Mathf.Clamp(pos.y, yMin, yMax);
         pos.z = -10;
         this.transform.position = pos;
     }

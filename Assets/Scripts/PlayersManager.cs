@@ -45,4 +45,9 @@ public class PlayersManager : MonoBehaviour
     {
         return Vector3.Lerp(players[0].GetComponent<CapsuleCollider2D>().bounds.center, players[1].GetComponent<CapsuleCollider2D>().bounds.center, 0.5f);
     }
+
+    public float GetDistanceBetweenPlayers()
+    {
+        return Vector3.Distance(players[0].GetComponent<CapsuleCollider2D>().bounds.center, players[1].GetComponent<CapsuleCollider2D>().bounds.center);
+    }
 }
