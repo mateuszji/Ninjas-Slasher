@@ -40,25 +40,25 @@ public class CameraManager : MonoBehaviour
         Vector2 rightTopCorner = mainCam.ViewportToWorldPoint(Vector3.one);
 
         left.transform.position = new Vector2(
-            leftBottomCorner.x + 0.3f,
+            leftBottomCorner.x,
             mainCam.transform.position.y
         );
         right.transform.position = new Vector2(
-            rightTopCorner.x - 0.3f,
+            rightTopCorner.x,
             mainCam.transform.position.y
         );
         top.transform.position = new Vector2(
             mainCam.transform.position.x,
-            rightTopCorner.y - 0.3f
+            rightTopCorner.y
         );
         bottom.transform.position = new Vector2(
             mainCam.transform.position.x,
-            leftBottomCorner.y + 0.3f
+            leftBottomCorner.y
         );
 
-        left.transform.localScale = new Vector3(1, Mathf.Abs(rightTopCorner.y - leftBottomCorner.y));
-        right.transform.localScale = new Vector3(1, Mathf.Abs(rightTopCorner.y - leftBottomCorner.y));
-        top.transform.localScale = new Vector3(Mathf.Abs(rightTopCorner.x - leftBottomCorner.x), 1);
-        bottom.transform.localScale = new Vector3(Mathf.Abs(rightTopCorner.x - leftBottomCorner.x), 1);
+        left.transform.localScale = new Vector3(.1f, Mathf.Abs(rightTopCorner.y - leftBottomCorner.y));
+        right.transform.localScale = new Vector3(.1f, Mathf.Abs(rightTopCorner.y - leftBottomCorner.y));
+        top.transform.localScale = new Vector3(Mathf.Abs(rightTopCorner.x - leftBottomCorner.x), .1f);
+        bottom.transform.localScale = new Vector3(Mathf.Abs(rightTopCorner.x - leftBottomCorner.x), .1f);
     }
 }
