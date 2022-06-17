@@ -79,6 +79,11 @@ public class Chain : MonoBehaviour
 
     private void SetStatus(bool status)
     {
+        if(status == false)
+        {
+            lr.SetPosition(0, new Vector3(0, 0, -10));
+            lr.SetPosition(1, new Vector3(0, 0, -10));
+        }
         lr.enabled = status;
         col.enabled = status;
     }
