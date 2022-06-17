@@ -250,6 +250,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7887222623787646078, guid: 1ac7f4adc66fbef42b1d06fa66df3a9a, type: 3}
+      propertyPath: m_Positions.Array.data[0].x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887222623787646078, guid: 1ac7f4adc66fbef42b1d06fa66df3a9a, type: 3}
+      propertyPath: m_Positions.Array.data[0].z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7887222623787646078, guid: 1ac7f4adc66fbef42b1d06fa66df3a9a, type: 3}
+      propertyPath: m_Positions.Array.data[1].x
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7887222623787646079, guid: 1ac7f4adc66fbef42b1d06fa66df3a9a, type: 3}
       propertyPath: m_Name
       value: Chain
@@ -522,7 +534,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
