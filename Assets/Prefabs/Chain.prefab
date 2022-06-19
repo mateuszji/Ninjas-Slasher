@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443f3454b72cc1843aaebec2e0b44ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 3
+  maxDistance: 8
 --- !u!68 &7887222623787645955
 EdgeCollider2D:
   m_ObjectHideFlags: 0

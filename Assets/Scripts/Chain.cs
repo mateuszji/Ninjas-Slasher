@@ -22,7 +22,7 @@ public class Chain : MonoBehaviour
     private EdgeCollider2D col;
     private bool isSpawned = false;
 
-    [Range(1,10), SerializeField] private float maxDistance;
+    [HideInInspector] public float maxDistance;
     private void Start()
     {
         if (!lr) lr = GetComponent<LineRenderer>();

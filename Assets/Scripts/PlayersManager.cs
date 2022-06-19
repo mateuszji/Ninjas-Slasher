@@ -21,6 +21,9 @@ public class PlayersManager : MonoBehaviour
     public Player[] players;
     [SerializeField]
     private GameObject playerPrefab;
+    [SerializeField]
+    private GameObject chainPrefab;
+    [SerializeField, Range(1, 10)] private float maxChainDistance;
 
     public float playerSpeed = 7.5f;
     void Start()
@@ -39,6 +42,10 @@ public class PlayersManager : MonoBehaviour
 
         players[1].playerType = Player.Players.Arrows;
         players[1].gameObject.name = "Player_Arrows";
+
+        GameObject newChain = Instantiate(chainPrefab, Vector3.zero, Quaternion.identity);
+        newChain.name = "Chain";
+        newChain.GetComponent<Chain>().maxDistance = maxChainDistance;
     }
 
     public Vector3 GetCenterBetweenPlayers()

@@ -32,9 +32,13 @@ public class CameraManager : MonoBehaviour
         GameObject bottom = new GameObject("BottomCollider", typeof(BoxCollider2D));
 
         left.transform.SetParent(transform);
+        left.layer = 9;
         right.transform.SetParent(transform);
+        right.layer = 9;
         top.transform.SetParent(transform);
+        top.layer = 9;
         bottom.transform.SetParent(transform);
+        bottom.layer = 9;
 
         Vector2 leftBottomCorner = mainCam.ViewportToWorldPoint(Vector3.zero);
         Vector2 rightTopCorner = mainCam.ViewportToWorldPoint(Vector3.one);
