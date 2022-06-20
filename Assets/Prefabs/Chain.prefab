@@ -143,6 +143,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 443f3454b72cc1843aaebec2e0b44ac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chainDefault: {fileID: 2100000, guid: 94b2014f546540643b8d654ca517ecf9, type: 2}
+  chainTooLongDistance: {fileID: 2100000, guid: b8b75de7c3f49a248974c1ae244f09f7, type: 2}
   maxDistance: 8
 --- !u!68 &7887222623787645955
 EdgeCollider2D:

@@ -22,13 +22,17 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject gameOverCanvas;
     [SerializeField]
-    private TMP_Text playerFailedInfo;
+    private TMP_Text playerFailedInfo, scoreTMP;
+
+    [HideInInspector]
+    public int score;
 
     [HideInInspector]
     public bool gameStarted = false;
 
     private void Start()
     {
+        score = 0;
         Time.timeScale = 1;
         gameStarted = true;
     }
@@ -47,5 +51,22 @@ public class GameManager : MonoBehaviour
     public void PlayAgain()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void AddScore(int points)
+    {
+        score += points;
+        scoreTMP.text = score.ToString();
+    }
+
+    private void Update()
+    {
+        if(!gameStarted)
+        {
+            if(Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.RightShift))
+            {
+                PlayAgain();
+            }
+        }
     }
 }

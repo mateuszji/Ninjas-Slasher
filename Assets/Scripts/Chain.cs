@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Chain : MonoBehaviour
 {
@@ -20,35 +21,51 @@ public class Chain : MonoBehaviour
 
     private LineRenderer lr;
     private EdgeCollider2D col;
-    private bool isSpawned = false;
+    [SerializeField]
+    private Material chainDefault, chainTooLongDistance;
+    private GameObject tooFarText;
 
     [HideInInspector] public float maxDistance;
+
+    private bool spawnedChain;
     private void Start()
     {
         if (!lr) lr = GetComponent<LineRenderer>();
         if (!col) col = GetComponent<EdgeCollider2D>();
+        if (!tooFarText) tooFarText = GameObject.Find("ChainTooLong");
+        spawnedChain = false;
+        
+        col.enabled = false;
+        lr.enabled = false;
 
-        SetStatus(false);
+        tooFarText.SetActive(false);
     }
     private void FixedUpdate()
     {
-        if(isSpawned)
+        if(spawnedChain)
         {
-            if(PlayersManager.Instance.GetDistanceBetweenPlayers() <= maxDistance)
-            {
-                ChangePosition();
+            ChangePosition();
+            SetColliders();
 
-                SetColliders();
+            if (PlayersManager.Instance.GetDistanceBetweenPlayers() <= maxDistance)
+            {
+                tooFarText.SetActive(false);
+                lr.material = chainDefault;
+                col.enabled = true;
             }
             else
             {
-                SetStatus(false);
+                tooFarText.SetActive(true);
+                lr.material = chainTooLongDistance;
+                col.enabled = false;
             }
         }
     }
 
     public void ChainCheck()
     {
+        if (!lr) return;
+
         bool chain = true;
 
         for (int i = 0; i < PlayersManager.Instance.players.Length; i++)
@@ -56,38 +73,22 @@ public class Chain : MonoBehaviour
             if(!PlayersManager.Instance.players[i].spawnedChain)
             {
                 chain = false;
-                isSpawned = false;
-                SetStatus(false);
                 break;
             }
-
         }
 
-        if(chain)
+        if (chain)
+            spawnedChain = true;
+        else
         {
-            if (PlayersManager.Instance.GetDistanceBetweenPlayers() > maxDistance)
-            {
-                Debug.Log("too far!");
-            }
-            else
-            {
-                isSpawned = true;
-                SetStatus(true);
-            }
-        }
-    }
-
-    private void SetStatus(bool status)
-    {
-        if (!lr) return;
-
-        if(status == false)
-        {
+            tooFarText.SetActive(false);
             lr.SetPosition(0, new Vector3(0, 0, -10));
             lr.SetPosition(1, new Vector3(0, 0, -10));
+            spawnedChain = false;
         }
-        lr.enabled = status;
-        col.enabled = status;
+
+        lr.enabled = spawnedChain;
+        col.enabled = spawnedChain;
     }
 
     private void ChangePosition()
@@ -126,6 +127,9 @@ public class Chain : MonoBehaviour
 
             Destroy(destroyEffect, 3f);
             Destroy(other.gameObject);
+
+            float points = 100 + ((maxDistance - PlayersManager.Instance.GetDistanceBetweenPlayers()) * 10);
+            GameManager.Instance.AddScore((int)points);
         }
     }
 }
