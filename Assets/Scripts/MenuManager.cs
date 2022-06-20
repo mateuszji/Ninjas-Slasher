@@ -11,15 +11,20 @@ public class MenuManager : MonoBehaviour
     private int state;
     private void Start()
     {
-        state = 1;
-        mainMenuCanvas.SetActive(true);
-        selectCharCanvas.SetActive(false);
+        ShowMainMenu();
     }
     public void GoToCharacterSelection()
     {
         state = 2;
         mainMenuCanvas.SetActive(false);
         selectCharCanvas.SetActive(true);
+    }
+
+    public void ShowMainMenu()
+    {
+        state = 1;
+        mainMenuCanvas.SetActive(true);
+        selectCharCanvas.SetActive(false);
     }
 
     public void StartGame()
