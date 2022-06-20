@@ -130,6 +130,8 @@ public class Chain : MonoBehaviour
 
             float points = 100 + ((maxDistance - PlayersManager.Instance.GetDistanceBetweenPlayers()) * 10);
             GameManager.Instance.AddScore((int)points);
+
+            AudioManager.Instance.EnemyDestroy();
         }
     }
 }
