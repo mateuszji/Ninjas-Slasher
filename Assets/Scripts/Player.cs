@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -40,8 +41,9 @@ public class Player : MonoBehaviour
         rb.MovePosition(rb.position + movement * PlayersManager.Instance.playerSpeed * Time.fixedDeltaTime);
     }
 
-void Update()
+    void Update()
     {
+        if (!GameManager.Instance.gameStarted) return;
         movement.x = Input.GetAxisRaw(horizontalInput);
         movement.y = Input.GetAxisRaw(verticalInput);
 
@@ -64,6 +66,14 @@ void Update()
         {
             spawnedChain = false;
             Chain.Instance.ChainCheck();
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.layer == 8) // Enemy
+        {
+            GameManager.Instance.GameOver(this.playerType);
         }
     }
 }

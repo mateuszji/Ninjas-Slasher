@@ -107,4 +107,23 @@ public class Chain : MonoBehaviour
         }
         col.SetPoints(edges);
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.layer == 8) // Enemy
+        {
+            ParticleSystem destroyEffect = Instantiate(EnemiesManager.Instance.destroyEffect, other.transform.position, Quaternion.identity);
+            ParticleSystem.MainModule ma = destroyEffect.main;
+            Enemy.Enemies enemyType = other.gameObject.GetComponent<Enemy>().enemyType;
+            if (enemyType == Enemy.Enemies.Red)
+                ma.startColor = Color.red;
+            if (enemyType == Enemy.Enemies.Green)
+                ma.startColor = Color.green;
+            if (enemyType == Enemy.Enemies.Yellow)
+                ma.startColor = Color.yellow;
+
+            Destroy(destroyEffect, 3f);
+            Destroy(other.gameObject);
+        }
+    }
 }

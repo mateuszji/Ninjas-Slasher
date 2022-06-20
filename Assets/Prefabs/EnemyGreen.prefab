@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1.99
+  enemyType: 1
 --- !u!60 &2343661266841779462
 PolygonCollider2D:
   m_ObjectHideFlags: 0
