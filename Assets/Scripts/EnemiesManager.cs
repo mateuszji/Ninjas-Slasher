@@ -55,8 +55,8 @@ public class EnemiesManager : MonoBehaviour
         bool safe = true;
         for(int i = 0; i < PlayersManager.Instance.players.Length; i++)
         {
-            Vector3 playerPos = PlayersManager.Instance.players[i].gameObject.transform.position;
-            if(Vector3.Distance(spawnPos, playerPos) < 10f)
+            Vector2 playerPos = PlayersManager.Instance.players[i].gameObject.transform.position;
+            if (Vector2.Distance(spawnPos, playerPos) < 6f)
             {
                 safe = false;
                 break;
