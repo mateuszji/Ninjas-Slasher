@@ -710,7 +710,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   players: []
-  playerPrefab: {fileID: 4571350300081212007, guid: 17577b11b2d39e841960a0e2cea77968, type: 3}
+  playerPrefabs:
+  - {fileID: 3902264470727735868, guid: d0fcad46231b2614faa5745f466b96ee, type: 3}
+  - {fileID: 4571350300081212007, guid: 17577b11b2d39e841960a0e2cea77968, type: 3}
+  - {fileID: 8543034951364901180, guid: cf27cfab1d259db47824be9b4e514236, type: 3}
   chainPrefab: {fileID: 7887222623787646079, guid: 1ac7f4adc66fbef42b1d06fa66df3a9a, type: 3}
   maxChainDistance: 8
   playerSpeed: 7.5
@@ -1485,6 +1488,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1337026435}
   - component: {fileID: 1337026434}
+  - component: {fileID: 1337026436}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Untagged
@@ -1602,6 +1606,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1337026436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1337026433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4aff6c0949f564542a3649d2fcc2c08a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundMusic: {fileID: 8300000, guid: ca4d1e27bd051c149a907d8fa7322daf, type: 3}
+  enemyDestroy: {fileID: 8300000, guid: c2643c37cb01c83439444aa621a5ad52, type: 3}
 --- !u!1 &1355450422
 GameObject:
   m_ObjectHideFlags: 0

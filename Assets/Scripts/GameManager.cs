@@ -32,6 +32,12 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        if (!ConfigManager.Instance)
+        {
+            SceneManager.LoadScene(0);
+            Debug.LogError("ConfigManager doesn't exist! Loaded menu scene.");
+        }
+
         score = 0;
         Time.timeScale = 1;
         gameStarted = true;

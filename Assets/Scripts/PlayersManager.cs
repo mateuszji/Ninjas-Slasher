@@ -18,9 +18,10 @@ public class PlayersManager : MonoBehaviour
 
     #endregion
 
+    [HideInInspector]
     public Player[] players;
     [SerializeField]
-    private GameObject playerPrefab;
+    private GameObject[] playerPrefabs;
     [SerializeField]
     private GameObject chainPrefab;
     [SerializeField, Range(1, 10)] private float maxChainDistance;
@@ -29,11 +30,16 @@ public class PlayersManager : MonoBehaviour
     void Start()
     {
         players = new Player[2];
-
         for(int i = 0; i < players.Length; i++)
         {
+            int skinID;
+            if (i == 0)
+                skinID = ConfigManager.Instance.skinNinjaWASD;
+            else
+                skinID = ConfigManager.Instance.skinNinjaArrows;
+
             Vector3 screenPosition = Camera.main.ScreenToWorldPoint(new Vector3(Random.Range(100, Screen.width-100), Random.Range(100, Screen.height-100), 10));
-            GameObject newPlayer = Instantiate(playerPrefab, screenPosition, Quaternion.identity);
+            GameObject newPlayer = Instantiate(playerPrefabs[skinID], screenPosition, Quaternion.identity);
             players[i] = newPlayer.GetComponent<Player>();
         }
 
