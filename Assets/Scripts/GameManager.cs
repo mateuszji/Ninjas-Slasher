@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1;
         gameStarted = true;
     }
     public void GameOver(Player.Players playerType)
@@ -40,5 +42,10 @@ public class GameManager : MonoBehaviour
             playerFailedInfo.text = "Player (Arrows) died!";
         if (playerType == Player.Players.WSAD)
             playerFailedInfo.text = "Player (WSAD) died!";
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(1);
     }
 }

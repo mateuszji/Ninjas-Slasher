@@ -79,6 +79,8 @@ public class Chain : MonoBehaviour
 
     private void SetStatus(bool status)
     {
+        if (!lr) return;
+
         if(status == false)
         {
             lr.SetPosition(0, new Vector3(0, 0, -10));
