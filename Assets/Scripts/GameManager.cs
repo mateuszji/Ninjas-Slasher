@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
 
     #endregion
     [SerializeField]
-    private GameObject gameOverCanvas;
+    private GameObject gameOverCanvas, pauseCanvas;
     [SerializeField]
     private TMP_Text playerFailedInfo, scoreTMP;
 
@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour
     public int score;
 
     [HideInInspector]
-    public bool gameStarted = false;
+    public bool gameStarted = false, pausedGame = false;
 
     private void Start()
     {
@@ -65,6 +65,27 @@ public class GameManager : MonoBehaviour
         scoreTMP.text = score.ToString();
     }
 
+    private void PauseGame(bool pause)
+    {
+        if(pause)
+        {
+            Time.timeScale = 0;
+            pauseCanvas.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1;
+            pauseCanvas.SetActive(false);
+        }
+
+        pausedGame = pause;
+    }
+
+    public void BackToMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
     private void Update()
     {
         if(!gameStarted)
@@ -73,6 +94,11 @@ public class GameManager : MonoBehaviour
             {
                 PlayAgain();
             }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+                PauseGame(!pausedGame);
         }
     }
 }
